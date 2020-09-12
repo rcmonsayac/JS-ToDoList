@@ -118,3 +118,9 @@ body {
     color:  #a88a9a;
     background-color: #440060;
 }
+
+.todo-crossed {
+    text-decoration: line-through;
+    color:  #a88a9a;
+    background-color: #440060;
+}
