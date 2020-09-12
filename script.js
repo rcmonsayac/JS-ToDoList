@@ -12,15 +12,14 @@ const addTodo = () =>{
         let todoContent = document.createElement("div");
             todoContent.classList.add("_button", "todo-content");
             todoContent.dataset.action = "cross";
-            todoContent.onclick = doAction;
+            todoContent.innerHTML = inputToDo;
+            todoContent.addEventListener("click", crossTodo);
 
-        let xButton = document.createElement("button");
+        let xButton = document.createElement("span");
             xButton.classList.add("_button", "rmv-btn");
             xButton.dataset.action = "remove";
-            xButton.onclick = doAction;
-    
-        todoContent.innerHTML = inputToDo;
-        xButton.innerHTML = "<i class=\"fa fa-times\"></i>";
+            xButton.innerHTML = "<i class=\"fa fa-times\" />";
+            xButton.addEventListener("click", removeTodo);
     
         todoDiv.appendChild(todoContent);
         todoDiv.appendChild(xButton);
@@ -31,28 +30,19 @@ const addTodo = () =>{
 };
 
 
-const crossTodo = (button) => {
-    button.classList.add("todo-crossed");
-    button.dataset.action = "";
+const crossTodo = function() {
+    this.classList.add("todo-crossed");
+    this.dataset.action = "";
 }
 
-const doAction = (e) => {
-    button = e.target;
-    let action = button.dataset.action;
-    if(action === "add"){
-        addTodo();
-    }
-    else if(action === "cross"){
-        crossTodo(button);
-    }
-    else if(action === "remove"){
-        removeTodo(button);
-    }
+const removeTodo = function() {
+    this.parentElement.remove();
 }
+
 
 let currentDate = document.querySelector(".current-date");
 currentDate.innerHTML = new Date().toLocaleDateString();
 
 
 let addButton = document.querySelector(".add-btn");
-addButton.onclick = doAction;
+addButton.onclick = addTodo;

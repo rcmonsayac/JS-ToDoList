@@ -106,12 +106,13 @@ body {
 }
 
 .rmv-btn {
-    display: block;
-    text-align: center;
     width: 10%;
     outline: none;
     background-color: #a88a9a;
     border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .rmv-btn:hover {
